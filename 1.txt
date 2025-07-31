@@ -1,0 +1,23 @@
+const twoSum = function(nums, target) {
+    let listOfIndices = [] // список значений
+    for (let i = 0; i < nums.length; i++) {
+        let sum = nums[i] // фиксируется текущее значение  
+        let currentIndex = i // фиксируется текущий индекс
+        let secondIndex = 0
+        for (let i = 0; i < nums.length; i++){
+            if (i === currentIndex) {
+                continue
+            }
+            if (sum + nums[i] === target) {
+                secondIndex = i;
+                sum = target;
+                break
+            }
+        }
+        listOfIndices = [currentIndex, secondIndex]
+        if (sum === target) {
+            break;
+        }
+    }
+    return listOfIndices
+};

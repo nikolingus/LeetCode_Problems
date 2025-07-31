@@ -1,0 +1,125 @@
+// Удаление сиволов из строки
+const removeChar = function (str, index) {
+  return str.slice(0, index) + str.slice(index + 1);
+};
+
+const romanToInt = function (s) {
+  let modifiedString = s;
+  let integerSum = 0;
+  let hardSituationsList = [];
+  // Перевод
+  romanTranslation = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };
+
+  for (let i = 0; i < modifiedString.length; i++) {
+    // Проверка для 4 и 9
+    if (modifiedString[i] == "I" && i != modifiedString.length - 1) {
+      if (modifiedString[i + 1] == "V") {
+        modifiedString = removeChar(modifiedString, i);
+        modifiedString = removeChar(modifiedString, i);
+        hardSituationsList.push(4);
+      }
+      if (modifiedString[i + 1] == "X") {
+        modifiedString = removeChar(modifiedString, i);
+        modifiedString = removeChar(modifiedString, i);
+        hardSituationsList.push(9);
+      }
+    }
+
+    // Проверка для 40 и 90
+    if (modifiedString[i] == "X" && i != modifiedString.length - 1) {
+      if (modifiedString[i + 1] == "L") {
+        modifiedString = removeChar(modifiedString, i);
+        modifiedString = removeChar(modifiedString, i);
+        hardSituationsList.push(40);
+      }
+      if (modifiedString[i + 1] == "C") {
+        modifiedString = removeChar(modifiedString, i);
+        modifiedString = removeChar(modifiedString, i);
+        hardSituationsList.push(90);
+      }
+    }
+
+    // Проверка для 400 и 900
+    if (modifiedString[i] == "C" && i != modifiedString.length - 1) {
+      if (modifiedString[i + 1] == "D") {
+        modifiedString = removeChar(modifiedString, i);
+        modifiedString = removeChar(modifiedString, i);
+        hardSituationsList.push(400);
+      }
+      if (modifiedString[i + 1] == "M") {
+        modifiedString = removeChar(modifiedString, i);
+        modifiedString = removeChar(modifiedString, i);
+        hardSituationsList.push(900);
+      }
+    }
+  }
+
+  // Повторный обход
+  for (let i = 0; i < modifiedString.length; i++) {
+    // Проверка для 4 и 9
+    if (modifiedString[i] == "I" && i != modifiedString.length - 1) {
+      if (modifiedString[i + 1] == "V") {
+        modifiedString = removeChar(modifiedString, i);
+        modifiedString = removeChar(modifiedString, i);
+        hardSituationsList.push(4);
+      }
+      if (modifiedString[i + 1] == "X") {
+        modifiedString = removeChar(modifiedString, i);
+        modifiedString = removeChar(modifiedString, i);
+        hardSituationsList.push(9);
+      }
+    }
+
+    // Проверка для 40 и 90
+    if (modifiedString[i] == "X" && i != modifiedString.length - 1) {
+      if (modifiedString[i + 1] == "L") {
+        modifiedString = removeChar(modifiedString, i);
+        modifiedString = removeChar(modifiedString, i);
+        hardSituationsList.push(40);
+      }
+      if (modifiedString[i + 1] == "C") {
+        modifiedString = removeChar(modifiedString, i);
+        modifiedString = removeChar(modifiedString, i);
+        hardSituationsList.push(90);
+      }
+    }
+
+    // Проверка для 400 и 900
+    if (modifiedString[i] == "C" && i != modifiedString.length - 1) {
+      if (modifiedString[i + 1] == "D") {
+        modifiedString = removeChar(modifiedString, i);
+        modifiedString = removeChar(modifiedString, i);
+        hardSituationsList.push(400);
+      }
+      if (modifiedString[i + 1] == "M") {
+        modifiedString = removeChar(modifiedString, i);
+        modifiedString = removeChar(modifiedString, i);
+        hardSituationsList.push(900);
+      }
+    }
+  }
+
+  // Обход простых случаев
+  if (modifiedString.length != 0) {
+    for (let i = 0; i < modifiedString.length; i++) {
+      integerSum += romanTranslation[modifiedString[i]];
+    }
+  }
+
+  // Добавление сложных случаев
+  if (hardSituationsList.length != 0) {
+    for (let i = 0; i < hardSituationsList.length; i++) {
+      integerSum += hardSituationsList[i];
+    }
+  }
+  console.log(integerSum);
+  return integerSum;
+};

@@ -1,0 +1,28 @@
+const isValid = function (s) {
+  if (s.length == 0 || s.length == 1 || (s.length % 2 == 1 && s.length != 2)) {
+    return false;
+  }
+  let countFirst = 0;
+  let countSecond = 0;
+  let countThird = 0;
+
+  while (s.length != 0) {
+    countFirst = (s.match(/\{\}/g) || []).length;
+    countSecond = (s.match(/\(\)/g) || []).length;
+    countThird = (s.match(/\[\]/g) || []).length;
+    if (countFirst >= 1 || countSecond >= 1 || countThird >= 1) {
+      s = s.replace("{}", "");
+      s = s.replace("[]", "");
+      s = s.replace("()", "");
+      countFirst = 0;
+      countSecond = 0;
+      countThird = 0;
+    } else {
+      return false;
+    }
+  }
+
+  if (s.length == 0) {
+    return true;
+  }
+};

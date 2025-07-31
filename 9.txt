@@ -1,0 +1,26 @@
+const isPalindrome = function (x) {
+  const stringX = x.toString();
+  let firstPart = "";
+  let secondPart = "";
+  const midStr = Math.round(stringX.length / 2);
+  if (stringX.length == 1) {
+    return true;
+  }
+  if (stringX.length % 2 == 0) {
+    firstPart = stringX.slice(0, stringX.length / 2);
+    secondPart = stringX.slice(stringX.length / 2, stringX.length);
+    if (firstPart == secondPart.split("").reverse().join("")) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    firstPart = stringX.slice(0, midStr - 1);
+    secondPart = stringX.slice(midStr, stringX.length + 1);
+    if (firstPart == secondPart.split("").reverse().join("")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+};
