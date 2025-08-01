@@ -1,0 +1,30 @@
+const mergeTwoLists = function (list1, list2) {
+  let listNode = null;
+  if (list1 == null && list2 == null) {
+    return listNode;
+  }
+  if (list1 == null) {
+    return list2;
+  }
+  if (list2 == null) {
+    return list1;
+  }
+  let sortedList = [];
+
+  while (list1 !== null) {
+    sortedList.push(list1.val);
+    list1 = list1.next;
+  }
+  while (list2 !== null) {
+    sortedList.push(list2.val);
+    list2 = list2.next;
+  }
+  // сортировка по возрастанию
+  sortedList.sort((a, b) => a - b);
+
+  for (let i = sortedList.length - 1; i >= 0; i--) {
+    listNode = { val: sortedList[i], next: listNode };
+  }
+
+  return listNode;
+};

@@ -1,0 +1,13 @@
+const searchInsert = function (nums, target) {
+  for (i = 0; i  nums.length; i++) {
+    if (i  0 && target = nums[i - 1] && target = nums[i]) {
+      return i;
+    }
+    if (i == 0 && target = nums[i]) {
+      return i;
+    }
+    if (i == nums.length - 1 && target = nums[i]) {
+      return nums.length;
+    }
+  }
+};
