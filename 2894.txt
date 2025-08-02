@@ -1,0 +1,13 @@
+const differenceOfSums = function (n, m) {
+  let firstSum = 0;
+  let secondSum = 0;
+  const listOfNumbers = Array.from({ length: n }, (_, i) => i + 1);
+  for (let i = 0; i < n; i++) {
+    if (listOfNumbers[i] % m == 0 || listOfNumbers[i] == m) {
+      firstSum += listOfNumbers[i];
+    } else {
+      secondSum += listOfNumbers[i];
+    }
+  }
+  return  secondSum - firstSum;
+};

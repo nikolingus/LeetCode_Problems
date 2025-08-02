@@ -1,0 +1,12 @@
+const insertChar = function (str, char, index) {
+  return str.substring(0, index) + char + str.substring(index);
+};
+const defangIPaddr = function (address) {
+  for (let i = 0; i < address.length; i++)
+    if (address[i] === ".") {
+      address = insertChar(address, "]", i + 1);
+      address = insertChar(address, "[", i);
+      i++;
+    }
+  return address;
+};

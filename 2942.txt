@@ -1,0 +1,9 @@
+const findWordsContaining = function (words, x) {
+  let finalArray = [];
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].includes(x)) {
+      finalArray.push(i);
+    }
+  }
+  return finalArray;
+};

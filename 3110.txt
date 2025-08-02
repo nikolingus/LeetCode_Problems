@@ -1,0 +1,10 @@
+const scoreOfString = function (s) {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let currentScore = 0;
+  for (let i = 1; i < s.length; i++) {
+    currentScore += Math.abs(
+      alphabet.indexOf(s[i]) - alphabet.indexOf(s[i - 1])
+    );
+  }
+  return currentScore;
+};
